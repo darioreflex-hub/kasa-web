@@ -1,0 +1,29 @@
+[
+  {
+    "id": "LG-VT34BPM",
+    "brand": "LG",
+    "name": "Heladera LG VT34BPM 335L",
+    "price": 850000,
+    "image": "https://via.placeholder.com/800x800.png?text=LG+VT34BPM",
+    "category": "Heladeras",
+    "stock": true
+  },
+  {
+    "id": "CANDY-CF6C4F1PW",
+    "brand": "Candy",
+    "name": "Lavavajillas Candy CF6C4F1PW 16 cubiertos",
+    "price": 599000,
+    "image": "https://via.placeholder.com/800x800.png?text=Candy+CF6C4F1PW",
+    "category": "Lavavajillas",
+    "stock": true
+  },
+  {
+    "id": "KITCHENAID-ARTISAN",
+    "brand": "KitchenAid",
+    "name": "Batidora KitchenAid Artisan",
+    "price": 570000,
+    "image": "https://via.placeholder.com/800x800.png?text=KitchenAid+Artisan",
+    "category": "Pequeños+Electro",
+    "stock": true
+  }
+]
