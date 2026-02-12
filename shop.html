@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>KASA | Tienda</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#CE1126",
+            secondary: "#008C45",
+            "background-light": "#F5F5F5",
+            "background-dark": "#0a0a0a",
+            "surface-dark": "#1a1a1a",
+            "surface-light": "#ffffff",
+          },
+          fontFamily: {
+            display: ["Montserrat", "sans-serif"],
+            body: ["Montserrat", "sans-serif"],
+          }
+        },
+      },
+    };
+  </script>
+  <style>
+    body{font-family:'Montserrat',sans-serif}
+  </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-gray-900 dark:text-gray-100">
+  <header class="sticky top-0 z-50 bg-white/80 dark:bg-black/60 backdrop-blur border-b border-gray-200 dark:border-gray-800">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between gap-4">
+      <a href="./index.html" class="flex items-baseline gap-2">
+        <span class="text-2xl font-extrabold tracking-tight uppercase">KASA</span>
+        <span class="text-xs tracking-[0.2em] uppercase text-gray-600 dark:text-gray-300">Electro & Cocina</span>
+      </a>
+
+      <div class="flex-1 max-w-xl">
+        <input id="q" class="w-full rounded-full bg-gray-100 dark:bg-black border border-gray-300 dark:border-gray-700 px-5 py-2.5 focus:ring-2 focus:ring-primary"
+               placeholder="Buscar: LG, Candy, Heladera, Lavavajillas..." />
+      </div>
+
+      <button id="cartBtn" class="relative rounded-full border border-gray-300 dark:border-gray-700 px-4 py-2 hover:border-primary">
+        Carrito
+        <span id="cartCount" class="ml-2 inline-flex items-center justify-center text-xs bg-primary text-white rounded-full w-5 h-5">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 py-10">
+    <div class="flex items-end justify-between gap-4 mb-8">
+      <div>
+        <h1 class="text-3xl font-bold">Tienda</h1>
+        <div class="h-1 w-24 bg-gradient-to-r from-secondary via-white to-primary mt-2"></div>
+      </div>
+
+      <select id="cat" class="rounded-full bg-white dark:bg-black border border-gray-300 dark:border-gray-700 px-4 py-2">
+        <option value="">Todas las categorías</option>
+      </select>
+    </div>
+
+    <div id="grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+  </main>
+
+  <!-- Drawer carrito -->
+  <div id="drawer" class="fixed inset-0 z-[60] hidden">
+    <div id="overlay" class="absolute inset-0 bg-black/50"></div>
+
+    <aside class="absolute right-0 top-0 h-full w-full max-w-md bg-white dark:bg-[#121212] shadow-2xl border-l border-gray-200 dark:border-gray-800 flex flex-col">
+      <div class="p-5 border-b border-gray-200 dark:border-gray-800 flex items-center justify-between">
+        <h2 class="text-xl font-bold">Tu carrito</h2>
+        <button id="close" class="px-3 py-1 rounded hover:bg-gray-100 dark:hover:bg-gray-900">Cerrar</button>
+      </div>
+
+      <div id="items" class="p-5 flex-1 overflow-auto space-y-4"></div>
+
+      <div class="p-5 border-t border-gray-200 dark:border-gray-800">
+        <div class="flex items-center justify-between mb-4">
+          <span class="text-gray-600 dark:text-gray-300">Total</span>
+          <span id="total" class="text-2xl font-extrabold">$0</span>
+        </div>
+
+        <div class="grid gap-2">
+          <input id="name" class="rounded-lg bg-gray-100 dark:bg-black border border-gray-300 dark:border-gray-700 px-4 py-3"
+                 placeholder="Tu nombre (opcional)"/>
+          <input id="city" class="rounded-lg bg-gray-100 dark:bg-black border border-gray-300 dark:border-gray-700 px-4 py-3"
+                 placeholder="Ciudad (opcional)"/>
+          <button id="wa" class="bg-[#25D366] hover:brightness-95 text-black font-bold py-3 rounded-lg">
+            Finalizar por WhatsApp
+          </button>
+          <button id="clear" class="border border-gray-300 dark:border-gray-700 hover:border-primary py-3 rounded-lg">
+            Vaciar carrito
+          </button>
+        </div>
+
+        <p class="text-xs text-gray-500 mt-3">
+          El pedido se envía por WhatsApp a KASA. Luego coordinamos pago y envío.
+        </p>
+      </div>
+    </aside>
+  </div>
+
+  <script>
+    const WA_NUMBER = "5491135897709"; // KASA WhatsApp
+    const money = (n) => new Intl.NumberFormat("es-AR").format(n);
+
+    let products = [];
+    let cart = JSON.parse(localStorage.getItem("kasa_cart") || "[]"); // [{id, qty}]
+
+    const grid = document.getElementById("grid");
+    const q = document.getElementById("q");
+    const cat = document.getElementById("cat");
+    const drawer = document.getElementById("drawer");
+    const overlay = document.getElementById("overlay");
+    const cartBtn = document.getElementById("cartBtn");
+    const closeBtn = document.getElementById("close");
+    const items = document.getElementById("items");
+    const totalEl = document.getElementById("total");
+    const cartCount = document.getElementById("cartCount");
+    const clearBtn = document.getElementById("clear");
+    const waBtn = document.getElementById("wa");
+
+    function saveCart() {
+      localStorage.setItem("kasa_cart", JSON.stringify(cart));
+      updateCartBadge();
+    }
+
+    function updateCartBadge() {
+      const count = cart.reduce((a, x) => a + x.qty, 0);
+      cartCount.textContent = count;
+    }
+
+    function findProduct(id) {
+      return products.find(p => p.id === id);
+    }
+
+    function addToCart(id) {
+      const existing = cart.find(x => x.id === id);
+      if (existing) existing.qty += 1;
+      else cart.push({ id, qty: 1 });
+      saveCart();
+    }
+
+    function setQty(id, qty) {
+      cart = cart.map(x => x.id === id ? ({...x, qty}) : x).filter(x => x.qty > 0);
+      saveCart();
+      renderDrawer();
+    }
+
+    function getFiltered() {
+      const term = q.value.trim().toLowerCase();
+      const c = cat.value;
+      return products.filter(p => {
+        const matchTerm = !term || (p.name + " " + p.brand + " " + p.category + " " + p.id).toLowerCase().includes(term);
+        const matchCat = !c || p.category === c;
+        return matchTerm && matchCat;
+      });
+    }
+
+    function render() {
+      const list = getFiltered();
+      grid.innerHTML = list.map(p => `
+        <div class="bg-white dark:bg-[#121212] rounded-xl border border-gray-200 dark:border-gray-800 overflow-hidden hover:shadow-xl transition-shadow">
+          <div class="aspect-square bg-white flex items-center justify-center p-4">
+            <img src="${p.image}" alt="${p.name}" class="object-contain w-full h-full"/>
+          </div>
+          <div class="p-5">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs uppercase tracking-wide text-gray-500">${p.brand}</span>
+              ${p.stock ? `<span class="text-xs font-bold text-secondary">EN STOCK</span>` : `<span class="text-xs font-bold text-gray-400">CONSULTAR</span>`}
+            </div>
+            <h3 class="font-bold text-lg leading-snug mb-3">${p.name}</h3>
+            <div class="flex items-center justify-between">
+              <div class="text-2xl font-extrabold text-primary">$${money(p.price)}</div>
+              <button
+                class="px-4 py-2 rounded-full bg-black dark:bg-white text-white dark:text-black font-semibold hover:opacity-90"
+                onclick="window.__add('${p.id}')"
+              >
+                Agregar
+              </button>
+            </div>
+            <p class="text-xs text-gray-500 mt-3">SKU: ${p.id} • ${p.category}</p>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function openDrawer() {
+      drawer.classList.remove("hidden");
+      renderDrawer();
+    }
+
+    function closeDrawer() {
+      drawer.classList.add("hidden");
+    }
+
+    function renderDrawer() {
+      if (cart.length === 0) {
+        items.innerHTML = `<p class="text-gray-500">Tu carrito está vacío.</p>`;
+        totalEl.textContent = "$0";
+        return;
+      }
+
+      let total = 0;
+      items.innerHTML = cart.map(x => {
+        const p = findProduct(x.id);
+        if (!p) return "";
+        const sub = p.price * x.qty;
+        total += sub;
+        return `
+          <div class="flex gap-4 items-center border border-gray-200 dark:border-gray-800 rounded-xl p-3">
+            <img src="${p.image}" class="w-16 h-16 object-contain bg-white rounded-lg p-2" alt="${p.name}"/>
+            <div class="flex-1">
+              <div class="font-semibold leading-snug">${p.name}</div>
+              <div class="text-xs text-gray-500">SKU: ${p.id}</div>
+              <div class="mt-2 flex items-center justify-between">
+                <div class="text-primary font-extrabold">$${money(p.price)}</div>
+                <div class="flex items-center gap-2">
+                  <button class="w-8 h-8 rounded-full border border-gray-300 dark:border-gray-700" onclick="window.__qty('${p.id}', ${x.qty-1})">-</button>
+                  <span class="min-w-[24px] text-center font-bold">${x.qty}</span>
+                  <button class="w-8 h-8 rounded-full border border-gray-300 dark:border-gray-700" onclick="window.__qty('${p.id}', ${x.qty+1})">+</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join("");
+
+      totalEl.textContent = "$" + money(total);
+    }
+
+    function whatsappCheckout() {
+      if (cart.length === 0) return;
+
+      const name = document.getElementById("name").value.trim();
+      const city = document.getElementById("city").value.trim();
+
+      let total = 0;
+      const lines = cart.map(x => {
+        const p = findProduct(x.id);
+        const sub = p.price * x.qty;
+        total += sub;
+        return `• ${x.qty} x ${p.name} (SKU: ${p.id}) - $${money(sub)}`;
+      }).join("\n");
+
+      const header = `Hola KASA 👋 Quiero hacer este pedido:`;
+      const extra = [
+        name ? `\nNombre: ${name}` : "",
+        city ? `\nCiudad: ${city}` : "",
+      ].join("");
+
+      const msg = `${header}\n\n${lines}\n\nTotal estimado: $${money(total)}${extra}\n\n¿Me confirmás stock y envío?`;
+      const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
+      window.open(url, "_blank");
+    }
+
+    // Expose handlers
+    window.__add = (id) => { addToCart(id); };
+    window.__qty = (id, qty) => setQty(id, qty);
+
+    // Events
+    q.addEventListener("input", render);
+    cat.addEventListener("change", render);
+    cartBtn.addEventListener("click", openDrawer);
+    closeBtn.addEventListener("click", closeDrawer);
+    overlay.addEventListener("click", closeDrawer);
+    clearBtn.addEventListener("click", () => { cart = []; saveCart(); renderDrawer(); });
+    waBtn.addEventListener("click", whatsappCheckout);
+
+    // Init
+    fetch("./products.json")
+      .then(r => r.json())
+      .then(data => {
+        products = data;
+        // categories
+        const cats = Array.from(new Set(products.map(p => p.category))).sort();
+        cats.forEach(c => {
+          const opt = document.createElement("option");
+          opt.value = c;
+          opt.textContent = c;
+          cat.appendChild(opt);
+        });
+        updateCartBadge();
+        render();
+      })
+      .catch(() => {
+        grid.innerHTML = `<p class="text-red-600 font-semibold">No se pudo cargar products.json</p>`;
+      });
+  </script>
+</body>
+</html>
