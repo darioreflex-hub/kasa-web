@@ -1,0 +1,546 @@
+index.html 
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>KASA Electro &amp; Cocina</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#CE1126", // Italian Red
+                        secondary: "#008C45", // Italian Green
+                        "background-light": "#F5F5F5",
+                        "background-dark": "#0a0a0a", // Deep black
+                        "surface-dark": "#1a1a1a",
+                        "surface-light": "#ffffff",
+                    },
+                    fontFamily: {
+                        display: ["Montserrat", "sans-serif"],
+                        body: ["Montserrat", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.5rem",
+                    },
+                },
+            },
+        };
+    </script>
+<style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+        .italian-gradient {
+            background: linear-gradient(90deg, #008C45 0%, #FFFFFF 50%, #CE1126 100%);
+            height: 4px;
+            width: 100%;
+        }
+        .mega-menu {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease-in-out;
+        }
+        .group:hover .mega-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-gray-900 dark:text-gray-100 transition-colors duration-300">
+<div class="bg-black text-white text-xs py-2 px-4 text-center">
+<p class="font-medium tracking-wide">FREE SHIPPING ON ORDERS OVER $500 • ITALIAN CRAFTSMANSHIP</p>
+</div>
+<nav class="sticky top-0 z-50 bg-surface-light dark:bg-surface-dark shadow-md border-b border-gray-200 dark:border-gray-800">
+<div class="container mx-auto px-4 md:px-8 py-4">
+<div class="flex items-center justify-between gap-8">
+<div class="flex-shrink-0 flex items-center">
+<a class="flex flex-col items-start group" href="#">
+<span class="text-3xl font-extrabold tracking-tighter uppercase dark:text-white text-black">KASA</span>
+<span class="text-[0.6rem] font-medium tracking-[0.2em] uppercase dark:text-gray-300 text-gray-600 group-hover:text-primary transition-colors">Electro &amp; Cocina</span>
+<div class="h-0.5 w-full mt-1 bg-gradient-to-r from-secondary via-white to-primary"></div>
+</a>
+</div>
+<div class="hidden md:flex flex-1 max-w-2xl mx-auto">
+<div class="relative w-full">
+<input class="w-full bg-gray-100 dark:bg-black border border-gray-300 dark:border-gray-700 rounded-full py-2.5 pl-12 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent dark:text-white transition-all" placeholder="Search for Heladeras, Hornos..." type="text"/>
+<span class="material-icons absolute left-4 top-2.5 text-gray-400">search</span>
+</div>
+</div>
+<div class="flex items-center space-x-6">
+<button class="flex flex-col items-center text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors">
+<span class="material-icons">person_outline</span>
+<span class="text-xs hidden lg:block mt-1">Account</span>
+</button>
+<button class="flex flex-col items-center text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors relative">
+<span class="material-icons">shopping_bag</span>
+<span class="absolute -top-1 -right-1 bg-primary text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full">2</span>
+<span class="text-xs hidden lg:block mt-1">Cart</span>
+</button>
+<button class="md:hidden text-gray-600 dark:text-gray-300">
+<span class="material-icons">menu</span>
+</button>
+</div>
+</div>
+</div>
+<div class="hidden md:block border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-black/50 backdrop-blur-sm relative">
+<div class="container mx-auto px-8">
+<ul class="flex justify-center space-x-8 py-3 text-sm font-medium uppercase tracking-wide relative">
+<li><a class="hover:text-primary dark:hover:text-primary transition-colors" href="#">Heladeras</a></li>
+<li class="group static">
+<button class="hover:text-primary dark:hover:text-primary transition-colors flex items-center">
+                            Lavado <span class="material-icons text-sm ml-1">expand_more</span>
+</button>
+<div class="mega-menu absolute left-0 right-0 top-full bg-white dark:bg-surface-dark border-b border-gray-200 dark:border-gray-700 shadow-xl z-50 p-6">
+<div class="container mx-auto grid grid-cols-3 gap-8">
+<a class="group/item block p-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors" href="#">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-4xl text-secondary">local_laundry_service</span>
+<div>
+<h4 class="font-bold text-lg mb-1 group-hover/item:text-secondary transition-colors">Lavarropas</h4>
+<p class="text-xs text-gray-500">Front &amp; Top Load Washers</p>
+</div>
+</div>
+</a>
+<a class="group/item block p-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors" href="#">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-4xl text-secondary">dry_cleaning</span>
+<div>
+<h4 class="font-bold text-lg mb-1 group-hover/item:text-secondary transition-colors">Lavasecarropas</h4>
+<p class="text-xs text-gray-500">2-in-1 Washer Dryer Combo</p>
+</div>
+</div>
+</a>
+<a class="group/item block p-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors" href="#">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-4xl text-secondary">dishwasher_gen</span>
+<div>
+<h4 class="font-bold text-lg mb-1 group-hover/item:text-secondary transition-colors">Lavavajillas</h4>
+<p class="text-xs text-gray-500">Integrated &amp; Freestanding</p>
+</div>
+</div>
+</a>
+</div>
+</div>
+</li>
+<li class="group static">
+<button class="hover:text-primary dark:hover:text-primary transition-colors flex items-center">
+                            Cocina <span class="material-icons text-sm ml-1">expand_more</span>
+</button>
+<div class="mega-menu absolute left-0 right-0 top-full bg-white dark:bg-surface-dark border-b border-gray-200 dark:border-gray-700 shadow-xl z-50 p-6">
+<div class="container mx-auto grid grid-cols-3 gap-8">
+<a class="group/item block p-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors" href="#">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-4xl text-primary">kitchen</span>
+<div>
+<h4 class="font-bold text-lg mb-1 group-hover/item:text-primary transition-colors">Hornos y Anafes</h4>
+<p class="text-xs text-gray-500">Complete Cooking Solutions</p>
+</div>
+</div>
+</a>
+<a class="group/item block p-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors" href="#">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-4xl text-primary">oven_gen</span>
+<div>
+<h4 class="font-bold text-lg mb-1 group-hover/item:text-primary transition-colors">Hornos</h4>
+<p class="text-xs text-gray-500">Electric &amp; Gas Ovens</p>
+</div>
+</div>
+</a>
+<a class="group/item block p-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors" href="#">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-4xl text-primary">cooking</span>
+<div>
+<h4 class="font-bold text-lg mb-1 group-hover/item:text-primary transition-colors">Anafes</h4>
+<p class="text-xs text-gray-500">Induction &amp; Gas Cooktops</p>
+</div>
+</div>
+</a>
+</div>
+</div>
+</li>
+<li><a class="hover:text-primary dark:hover:text-primary transition-colors" href="#">Espresso</a></li>
+<li><a class="hover:text-primary dark:hover:text-primary transition-colors text-primary" href="#">Sale</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="relative h-[600px] flex items-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img alt="Professional Espresso Machine pouring coffee" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuABru6Fu-JsiAcFIVzSYSdUdfWc91gIKuARO0aBNPq4cMywneHh5JQKDoa46Mlr3-y9hNSblHYfNFmQBM8ySdW-eW3lYM7UlhV2KsRuHozzgIk2Z9mVvXDb6rekzP-1GooA3CSDDgjD_x1d_A-1JEom4tcoNa5UCtKmUPEujNXvGi6X6FOYIj2RAHjeIKYwU5osKKs2NLzCxgh2yHzW2xJb7c6PIieqfJsIMSnZp46_wQJTxxK130bWyJP4KMXaP8bP4T0zT290TzQ"/>
+<div class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent"></div>
+</div>
+<div class="container mx-auto px-4 md:px-8 relative z-10">
+<div class="max-w-xl">
+<div class="flex items-center space-x-2 mb-4">
+<span class="h-0.5 w-8 bg-secondary"></span>
+<span class="text-secondary font-bold tracking-wider uppercase text-sm">Italian Excellence</span>
+</div>
+<h1 class="text-5xl md:text-6xl font-bold text-white leading-tight mb-6">
+                    Master the Art of <br/>
+<span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">Espresso</span>
+</h1>
+<p class="text-gray-300 text-lg mb-8 font-light">
+                    Bring the authentic taste of Italy to your kitchen with our premium collection of espresso machines and grinders.
+                </p>
+<div class="flex flex-col sm:flex-row gap-4">
+<button class="bg-primary hover:bg-red-700 text-white px-8 py-4 rounded font-semibold uppercase tracking-wider transition-all transform hover:-translate-y-1 shadow-lg shadow-red-900/20">
+                        Shop Now
+                    </button>
+<button class="bg-transparent border border-white hover:bg-white hover:text-black text-white px-8 py-4 rounded font-semibold uppercase tracking-wider transition-all">
+                        View Collection
+                    </button>
+</div>
+</div>
+</div>
+</section>
+<div class="bg-surface-light dark:bg-surface-dark py-12 border-b border-gray-200 dark:border-gray-800">
+<div class="container mx-auto px-4">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-gray-200 dark:divide-gray-700">
+<div class="p-4">
+<span class="material-icons text-4xl text-secondary mb-3">local_shipping</span>
+<h3 class="font-bold text-lg mb-2">Nationwide Delivery</h3>
+<p class="text-gray-500 dark:text-gray-400 text-sm">Safe and secure shipping to your doorstep</p>
+</div>
+<div class="p-4">
+<span class="material-icons text-4xl text-primary mb-3">verified</span>
+<h3 class="font-bold text-lg mb-2">Official Warranty</h3>
+<p class="text-gray-500 dark:text-gray-400 text-sm">2-year guarantee on all major appliances</p>
+</div>
+<div class="p-4">
+<span class="material-icons text-4xl text-secondary mb-3">support_agent</span>
+<h3 class="font-bold text-lg mb-2">Expert Support</h3>
+<p class="text-gray-500 dark:text-gray-400 text-sm">Our specialists are here to help 24/7</p>
+</div>
+</div>
+</div>
+</div>
+<section class="py-16 md:py-24 bg-gray-50 dark:bg-black">
+<div class="container mx-auto px-4 md:px-8">
+<div class="flex items-end justify-between mb-12">
+<div>
+<h2 class="text-3xl font-bold mb-2">Shop by Category</h2>
+<div class="h-1 w-20 bg-gradient-to-r from-secondary via-white to-primary"></div>
+</div>
+<a class="hidden md:flex items-center text-sm font-semibold hover:text-primary transition-colors" href="#">
+                    VIEW ALL CATEGORIES <span class="material-icons text-sm ml-1">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+<div class="group relative overflow-hidden rounded-lg aspect-[3/4] cursor-pointer bg-surface-dark shadow-lg">
+<img alt="Modern Refrigerator" class="absolute inset-0 w-full h-full object-cover opacity-70 transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5C9YJAtJ-KCxnnx6SM3X6zragde3RSuUEWG2wDljHrAvLc6LC9xtfzatoM754UYsjdtlx4kdlOsKfPIDbaSZx2g_XYq3Y0Uu6GgOwXBK3E6S3Or3rVT5U5jMTLwiUWIm1ZHV2mconNmFNZamgELEH-p4E0Tj22TqHFKV5QJkRwo5B7-eNwOig7WHL1xwtrun1DZXYyD0oSsMke9G3V3M6mAE7o4YZO6SVRuNMMqfPZX5_pQZ7OMKdhek4V5i1AqVFJwjTaMhw9YQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+<div class="absolute top-4 right-4 bg-white/10 backdrop-blur-md p-2 rounded-full border border-white/20">
+<span class="material-symbols-outlined text-white">kitchen</span>
+</div>
+<div class="absolute bottom-0 left-0 p-6">
+<h3 class="text-white text-xl font-bold mb-1">Heladeras</h3>
+<p class="text-gray-400 text-xs mb-3">Advanced Cooling Technology</p>
+<span class="text-secondary text-sm group-hover:text-primary transition-colors flex items-center font-semibold">
+                            Ver Productos <span class="material-icons text-xs ml-1">arrow_forward</span>
+</span>
+</div>
+</div>
+<div class="group relative overflow-hidden rounded-lg aspect-[3/4] cursor-pointer bg-surface-dark shadow-lg">
+<img alt="Washing Machine" class="absolute inset-0 w-full h-full object-cover opacity-70 transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAW8C5fRgntchmoMxsO1p5OviXTpcCgXVW397VqqmDGIzAyvCLXUbAHxgaBH0GZlHoMN8RI7NvqqAowav7RrcS18bw_8LTVmPLOyVg0UDY-hy70QRpoQcGWXIs4kulfjGrsWMOUWIK_M2mhCmi-fKTAIUJdMSukOMRdo9lJ1OQdSaxCsybSRTvuBK2wPi89btYlBb3TS9H2qIT4HeSoSB7JO5C3YGXB8JOuXD0AgxMz9Rplf_2-98tcy_nWOvqqe7J7tavOumhWuX8"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+<div class="absolute top-4 right-4 bg-white/10 backdrop-blur-md p-2 rounded-full border border-white/20">
+<span class="material-symbols-outlined text-white">local_laundry_service</span>
+</div>
+<div class="absolute bottom-0 left-0 p-6">
+<h3 class="text-white text-xl font-bold mb-1">Lavarropas</h3>
+<p class="text-gray-400 text-xs mb-3">Efficient Cleaning Cycles</p>
+<span class="text-secondary text-sm group-hover:text-primary transition-colors flex items-center font-semibold">
+                            Ver Productos <span class="material-icons text-xs ml-1">arrow_forward</span>
+</span>
+</div>
+</div>
+<div class="group relative overflow-hidden rounded-lg aspect-[3/4] cursor-pointer bg-surface-dark shadow-lg">
+<img alt="Washer Dryer Combo" class="absolute inset-0 w-full h-full object-cover opacity-70 transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXOFavTbY-ImuiVD1JPUlWZ-VSpFKxgf5N-al34IL5fdnc_y59k-zGAMZDd2-MkgLy7Hsy09Wmn62yah6AKrapLS3evOthsgV6nkOdDjByjILgxqMb_IQtyIp0AzentWIJI_2ulKVpVl4Bg9i0wj1PWYOO-Qg6CBRqPYmTdw3Bhi3remjBJ5QCWnJuSl6eRnmDmLHODPqjbM82BS2xgLN9uE61GtpdLEF2O5F54q1Z_-IVgzuOeMY7XNOM8xg7AuBfjieLutE1yCo"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+<div class="absolute top-4 right-4 bg-white/10 backdrop-blur-md p-2 rounded-full border border-white/20">
+<span class="material-symbols-outlined text-white">dry_cleaning</span>
+</div>
+<div class="absolute bottom-0 left-0 p-6">
+<h3 class="text-white text-xl font-bold mb-1">Lavasecarropas</h3>
+<p class="text-gray-400 text-xs mb-3">Wash &amp; Dry in One Go</p>
+<span class="text-secondary text-sm group-hover:text-primary transition-colors flex items-center font-semibold">
+                            Ver Productos <span class="material-icons text-xs ml-1">arrow_forward</span>
+</span>
+</div>
+</div>
+<div class="group relative overflow-hidden rounded-lg aspect-[3/4] cursor-pointer bg-surface-dark shadow-lg">
+<img alt="Dishwasher" class="absolute inset-0 w-full h-full object-cover opacity-70 transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZIz7kjBTAhWNzpdHjXK_6i9yXdBBNnWGXbm9Xp9DdH5bQp1t4dHrRLRfy4FJ_eEnvhWjmVQFWuhgG8sKR8H4BeHPB92y7D46MvIuXsTP43GZzz6zdHsmb42y5sxKLmHmxEa5kzDLFYU51zpAskp33qWolItycsPl_idu16PmdVjS48pZ7Z5hWDvOQklwIU8MFsW9z2DlHgx8mRA7V4pEI8tgIPkHWIafdhVlR7N_vTSoNR0UNU0xei7ofbQ75UaZGw49fAA9ECCw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+<div class="absolute top-4 right-4 bg-white/10 backdrop-blur-md p-2 rounded-full border border-white/20">
+<span class="material-symbols-outlined text-white">dishwasher_gen</span>
+</div>
+<div class="absolute bottom-0 left-0 p-6">
+<h3 class="text-white text-xl font-bold mb-1">Lavavajillas</h3>
+<p class="text-gray-400 text-xs mb-3">Sparkling Clean Dishes</p>
+<span class="text-secondary text-sm group-hover:text-primary transition-colors flex items-center font-semibold">
+                            Ver Productos <span class="material-icons text-xs ml-1">arrow_forward</span>
+</span>
+</div>
+</div>
+<div class="group relative overflow-hidden rounded-lg aspect-[3/4] cursor-pointer bg-surface-dark shadow-lg">
+<img alt="Built-in Oven" class="absolute inset-0 w-full h-full object-cover opacity-70 transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9TfM3YPSkiif8xokN3o7jXUv0vY6XmW28LwKOXusQ4mWwKX9A9QRfkDwu7nG9gGj6LRvftwsLrHYQdU5mE08Bj0NhqJwfXBQu9rR985LbL8KmHfGNSxSHc5lpUCMrDp8WTsC--3_YnM6eplFJQx8VtFQS5XpgmXfgHcxsTCx_-Z0DzAy_HGr_Lj0BEbQV1eWNP5PAQz5H0bZizbMgY7nGjYRFpXWc8nrilK-_Ne-zG_sHpMY6_jFy00YaMEbgvZVj3hJQH3JEaKE"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+<div class="absolute top-4 right-4 bg-white/10 backdrop-blur-md p-2 rounded-full border border-white/20">
+<span class="material-symbols-outlined text-white">oven_gen</span>
+</div>
+<div class="absolute bottom-0 left-0 p-6">
+<h3 class="text-white text-xl font-bold mb-1">Hornos</h3>
+<p class="text-gray-400 text-xs mb-3">Precision Baking</p>
+<span class="text-secondary text-sm group-hover:text-primary transition-colors flex items-center font-semibold">
+                            Ver Productos <span class="material-icons text-xs ml-1">arrow_forward</span>
+</span>
+</div>
+</div>
+<div class="group relative overflow-hidden rounded-lg aspect-[3/4] cursor-pointer bg-surface-dark shadow-lg">
+<img alt="Cooktop" class="absolute inset-0 w-full h-full object-cover opacity-70 transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMrdyB80Hhp3ZaiIRDl5saMddO2xnFBeSOMAx8pCEI3AmmW_qAUsKCgpT1JJNPkvmfU9ASWlIsXoKTqCyNybG1WOLoSpXqa67OSAqolXBkTKNA8oULF0oULEY1FJettQ2FQpSITjiUxnmv1M4EwoOQLDbQOIdmt9YixIWAn571cc9B_ttbnfXTXYTlxKC7VCV53eDDTJ7sJKX6ki5_USX-xJcKhaODypM9_TClUbktSxgpWdYJ-ivVuphezmc97nS-dwh9o1YEHA4"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+<div class="absolute top-4 right-4 bg-white/10 backdrop-blur-md p-2 rounded-full border border-white/20">
+<span class="material-symbols-outlined text-white">cooking</span>
+</div>
+<div class="absolute bottom-0 left-0 p-6">
+<h3 class="text-white text-xl font-bold mb-1">Anafes</h3>
+<p class="text-gray-400 text-xs mb-3">Gas &amp; Induction Cooktops</p>
+<span class="text-secondary text-sm group-hover:text-primary transition-colors flex items-center font-semibold">
+                            Ver Productos <span class="material-icons text-xs ml-1">arrow_forward</span>
+</span>
+</div>
+</div>
+<div class="group relative overflow-hidden rounded-lg aspect-[3/4] cursor-pointer bg-surface-dark shadow-lg">
+<img alt="Kitchen Mixer" class="absolute inset-0 w-full h-full object-cover opacity-70 transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAy9d3v-donPPtmZyeMlC9RrvnK0rS-Q7trKfX-n6ujlZZjV7yJQZGgfy7c235MYfvOx3xmQMVgtsH7zpiNAcc1BIXp4oYqo8norOW7n5UNMH3Qy_IJxEjO-qOk5hBUYv0eRtnqhpWj1BWsc733AV2cUgsLBUcNxD3HcmQsxhxmYn8e0G4gcc6mMqIJ_q0KV--4jT38u96OUFoNhjIZ24qWCDwUWSfO36nJ8iE6_gbUAya7Zj64y2ibC72FaIobiQF-0PAkXKtYauU"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+<div class="absolute top-4 right-4 bg-white/10 backdrop-blur-md p-2 rounded-full border border-white/20">
+<span class="material-symbols-outlined text-white">blender</span>
+</div>
+<div class="absolute bottom-0 left-0 p-6">
+<h3 class="text-white text-xl font-bold mb-1">Pequeños Electro</h3>
+<p class="text-gray-400 text-xs mb-3">Mixers, Kettles &amp; More</p>
+<span class="text-secondary text-sm group-hover:text-primary transition-colors flex items-center font-semibold">
+                            Ver Productos <span class="material-icons text-xs ml-1">arrow_forward</span>
+</span>
+</div>
+</div>
+<div class="group relative overflow-hidden rounded-lg aspect-[3/4] cursor-pointer bg-surface-dark shadow-lg">
+<img alt="Kitchen Set" class="absolute inset-0 w-full h-full object-cover opacity-70 transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC529ObL5-X7w9gR6yQbk_u1lpafydaUCUppZS74ruG8ouUhh9Rc9KbilLgxHPohLcywuZ2G2tvQD8sYH9FiJDTN8Bn3Xk2QRj7yo0kolRo4v4-k57MfcJuIR_hcJTo2W5-jSBLCpCF36zwHuiDpoOkiApegbbbWUW_7sk1_r7gMumsr1tv_uKG0X-wtYLY-e6uFJnhFPPOABqLkXWfChnAEfdtU2GfEAh7wHLfVJ5_KW4vdcGq7dN8U2XL4j8WRCacL_CaQk5GtH8"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+<div class="absolute top-4 right-4 bg-white/10 backdrop-blur-md p-2 rounded-full border border-white/20">
+<span class="material-symbols-outlined text-white">kitchen</span>
+</div>
+<div class="absolute bottom-0 left-0 p-6">
+<h3 class="text-white text-xl font-bold mb-1">Hornos y Anafes</h3>
+<p class="text-gray-400 text-xs mb-3">Complete Kitchen Sets</p>
+<span class="text-secondary text-sm group-hover:text-primary transition-colors flex items-center font-semibold">
+                            Ver Productos <span class="material-icons text-xs ml-1">arrow_forward</span>
+</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-16 bg-surface-light dark:bg-surface-dark">
+<div class="container mx-auto px-4 md:px-8">
+<div class="flex items-center justify-between mb-8">
+<h2 class="text-3xl font-bold flex items-center gap-3">
+<span class="bg-primary text-white p-1 rounded-sm text-sm font-bold px-2">DEAL</span>
+                    Special Offers
+                </h2>
+<div class="flex gap-2">
+<button class="p-2 border border-gray-300 dark:border-gray-600 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+<span class="material-icons">chevron_left</span>
+</button>
+<button class="p-2 border border-gray-300 dark:border-gray-600 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+<span class="material-icons">chevron_right</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+<div class="bg-white dark:bg-[#121212] rounded-lg shadow-sm hover:shadow-xl transition-shadow border border-gray-100 dark:border-gray-800 group">
+<div class="relative aspect-square overflow-hidden bg-white rounded-t-lg p-4 flex items-center justify-center">
+<span class="absolute top-3 left-3 bg-secondary text-white text-xs font-bold px-2 py-1 rounded">-20%</span>
+<img alt="Retro Toaster" class="object-contain h-full w-full group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlPfcGh-4v2xH0yBcW_6B5G7JX45-r61TX8u-iEDErNR1fLDtoSfWiedCIFH1ZC4RWYK8JN9uXvz2axdU64nRGf3NDpobH8Lm5PM2CkXxGCsI-nOZ1isrNCuMFBOlzJ7DNqwBnhz0k10PZEhh1zfU0JyV49zH07rYC0ak8IMGGo1cB26MAXkE5fMqtu82z7AH0_4UwPnYUDUrZbhgwWsxlqDiczRCSO3W5y5-K0VQvqBlQBQpaxZZiz9_Vf_ZRqVXO_RzTw0Z3Lso"/>
+<button class="absolute bottom-3 right-3 bg-black dark:bg-white text-white dark:text-black p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity shadow-lg">
+<span class="material-icons text-sm">add_shopping_cart</span>
+</button>
+</div>
+<div class="p-4">
+<p class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-1">Smeg</p>
+<h3 class="font-semibold text-lg mb-2 truncate">Retro Style Toaster 2-Slice</h3>
+<div class="flex items-center justify-between">
+<div>
+<span class="text-primary font-bold text-lg">$149.00</span>
+<span class="text-gray-400 text-sm line-through ml-2">$189.00</span>
+</div>
+<div class="flex text-yellow-500 text-xs">
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star_half</span>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-[#121212] rounded-lg shadow-sm hover:shadow-xl transition-shadow border border-gray-100 dark:border-gray-800 group">
+<div class="relative aspect-square overflow-hidden bg-white rounded-t-lg p-4 flex items-center justify-center">
+<img alt="Stand Mixer" class="object-contain h-full w-full group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWohL-e61ClEOIgILThgOy0e-eHVRZElabpRB8rOokDuzneFne9XhiUlX7nJt5HBg-69mZKDLsrjHTBGSz15rZskYBLCAGyY_-JehtGdNVb8uWaQsG0mPINMNQDPBZa9XyN-yu_P5Ix_24DFyukzkbzPvK_w-6KYLEgc-AyA5wXwjSwiAJgCy0mkQEyoQ6B2IwTfjY5GehzCYmXgXpLgVCngK01ziLgN37uygVK5agxtdFo4BkEWe2SxO4uPHAxaLdhHUfMm3WhMc"/>
+<button class="absolute bottom-3 right-3 bg-black dark:bg-white text-white dark:text-black p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity shadow-lg">
+<span class="material-icons text-sm">add_shopping_cart</span>
+</button>
+</div>
+<div class="p-4">
+<p class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-1">KitchenAid</p>
+<h3 class="font-semibold text-lg mb-2 truncate">Artisan Stand Mixer</h3>
+<div class="flex items-center justify-between">
+<div>
+<span class="text-gray-900 dark:text-white font-bold text-lg">$399.00</span>
+</div>
+<div class="flex text-yellow-500 text-xs">
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-[#121212] rounded-lg shadow-sm hover:shadow-xl transition-shadow border border-gray-100 dark:border-gray-800 group">
+<div class="relative aspect-square overflow-hidden bg-white rounded-t-lg p-4 flex items-center justify-center">
+<span class="absolute top-3 left-3 bg-primary text-white text-xs font-bold px-2 py-1 rounded">HOT</span>
+<img alt="Espresso Machine" class="object-contain h-full w-full group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuApKthtHGd-A9bNMd95h70SoHAlxdmjnLSr3_hUAB4rb7UMMwF8e5Pqs5YSYr8cVhW2dMHI6KCpc6JaxYZiMsua_6cfzvXb-5jiqNW_tjhX_Lacy2pIBxzI6yVda5vemezjXFU1SEC5D0Xf3tqf3Ri1-BlgwEZf8KR2ksRqY8EpUimhQiRODp5vVMskzM2tjHxDFmDx02jlxXlRBAcn5PWVhsBm6AmiQmyVfdrhGLycMhnxGyF6i56sCc6npOB8eFop1Z9jRUUl1cg"/>
+<button class="absolute bottom-3 right-3 bg-black dark:bg-white text-white dark:text-black p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity shadow-lg">
+<span class="material-icons text-sm">add_shopping_cart</span>
+</button>
+</div>
+<div class="p-4">
+<p class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-1">DeLonghi</p>
+<h3 class="font-semibold text-lg mb-2 truncate">Dedica Style Espresso</h3>
+<div class="flex items-center justify-between">
+<div>
+<span class="text-primary font-bold text-lg">$249.00</span>
+<span class="text-gray-400 text-sm line-through ml-2">$299.00</span>
+</div>
+<div class="flex text-yellow-500 text-xs">
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star_border</span>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-[#121212] rounded-lg shadow-sm hover:shadow-xl transition-shadow border border-gray-100 dark:border-gray-800 group">
+<div class="relative aspect-square overflow-hidden bg-white rounded-t-lg p-4 flex items-center justify-center">
+<img alt="Electric Kettle" class="object-contain h-full w-full group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_O2L1BuY3Xd4V7H9qVlaeURkRha5sRApaMudLN-Z7NvjxfGCJgsN2zosk04lnzS-hCLn5CRzxvzP_-BDpvj33HLRoncYoLz2fY20bux_0eGeEe8VV1Oyh6p87pVUbMX9bWsP_bMwAJtxbTlFyH9mlLlmnCuS6Faa10uLzLIFXr0RZ3SuaBvslPjPXNNWdbeTGqhhuCTrYMI59Q40wxOk9N81PuEqeHR7wFIhH3ip_-11bSN-khFtorO_jqtuxebuZxQVTrhBj8Vw"/>
+<button class="absolute bottom-3 right-3 bg-black dark:bg-white text-white dark:text-black p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity shadow-lg">
+<span class="material-icons text-sm">add_shopping_cart</span>
+</button>
+</div>
+<div class="p-4">
+<p class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-1">Alessi</p>
+<h3 class="font-semibold text-lg mb-2 truncate">Plissé Electric Kettle</h3>
+<div class="flex items-center justify-between">
+<div>
+<span class="text-gray-900 dark:text-white font-bold text-lg">$115.00</span>
+</div>
+<div class="flex text-yellow-500 text-xs">
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-20 bg-secondary relative overflow-hidden">
+<div class="absolute inset-0 opacity-10">
+<img alt="Pattern" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcfLEb9O246_6fmlSfRRNUXKvUgqXJYmy_4Gx6W21VrpSqqzO5QIx5A2amFshol5wMrgiQRiNPDI51J8Sd4657P7KEsS_w0O_txzPQG64BdLSkKq1oC5qg9ekEjUNa3TLuOLJ2GsfsaA_ef0iONWOOtubbhHty0BJ0gFLp2RzPoBlt1WznnQ59y4Bhu3aik4bnzY1vnMESLtiTJKv2wRb83JgOjEnkx2RgCefZDeZL8l37TuitYqJnriDszyn6vdxGJP7N4ye4eSc"/>
+</div>
+<div class="container mx-auto px-4 text-center relative z-10">
+<h2 class="text-3xl md:text-5xl font-bold text-white mb-6">Experience La Dolce Vita</h2>
+<p class="text-white text-lg max-w-2xl mx-auto mb-10 opacity-90">Discover our exclusive collection of hand-picked Italian appliances that combine sophisticated design with superior functionality.</p>
+<button class="bg-white text-secondary font-bold py-4 px-10 rounded shadow-lg hover:bg-gray-100 transition-colors uppercase tracking-widest">
+                Discover Italian Brands
+            </button>
+</div>
+</section>
+<footer class="bg-black text-white pt-16 pb-8 border-t-4 border-primary">
+<div class="container mx-auto px-4 md:px-8">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+<div class="flex flex-col items-start">
+<a class="flex flex-col items-start mb-6" href="#">
+<span class="text-2xl font-extrabold tracking-tighter uppercase text-white">KASA</span>
+<span class="text-[0.5rem] font-medium tracking-[0.2em] uppercase text-gray-400">Electro &amp; Cocina</span>
+<div class="h-0.5 w-full mt-1 bg-gradient-to-r from-secondary via-white to-primary"></div>
+</a>
+<p class="text-gray-400 text-sm mb-6 leading-relaxed">
+                        Bringing the finest kitchen technology and elegant design to your home. KASA Electro &amp; Cocina is your destination for premium appliances.
+                    </p>
+<div class="flex space-x-4">
+<a class="text-gray-400 hover:text-white transition-colors" href="#"><i class="material-icons">facebook</i></a>
+<a class="text-gray-400 hover:text-white transition-colors" href="#"><i class="material-icons">photo_camera</i></a>
+<a class="text-gray-400 hover:text-white transition-colors" href="#"><i class="material-icons">alternate_email</i></a>
+</div>
+</div>
+<div>
+<h4 class="text-lg font-bold mb-6">Shop</h4>
+<ul class="space-y-3 text-sm text-gray-400">
+<li><a class="hover:text-primary transition-colors" href="#">Large Appliances</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Small Appliances</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Coffee &amp; Espresso</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Cookware</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Spare Parts</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-bold mb-6">Support</h4>
+<ul class="space-y-3 text-sm text-gray-400">
+<li><a class="hover:text-primary transition-colors" href="#">Contact Us</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Shipping &amp; Returns</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Warranty Info</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Service Centers</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">FAQ</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-bold mb-6">Stay Updated</h4>
+<p class="text-gray-400 text-sm mb-4">Subscribe for exclusive deals and Italian recipes.</p>
+<form class="flex flex-col space-y-3">
+<input class="bg-gray-900 border border-gray-800 text-white px-4 py-3 rounded focus:outline-none focus:border-primary transition-colors" placeholder="Your email address" type="email"/>
+<button class="bg-primary hover:bg-red-700 text-white font-bold py-3 px-4 rounded transition-colors uppercase text-sm tracking-wide">Subscribe</button>
+</form>
+</div>
+</div>
+<div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
+<p>© 2023 KASA Electro &amp; Cocina. All rights reserved.</p>
+<div class="flex space-x-6 mt-4 md:mt-0">
+<a class="hover:text-white" href="#">Privacy Policy</a>
+<a class="hover:text-white" href="#">Terms of Service</a>
+</div>
+</div>
+<div class="mt-4 flex justify-center items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="w-2 h-2 rounded-full bg-white"></span>
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+</div>
+</div>
+</footer>
+
+</body></html>
